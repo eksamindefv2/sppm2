@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">{% block title %}
+  <title>Blank SPPMaaaaaaaaaaa</title>{% endblock %}
+</head>
+<body>
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Senarai Sistem</h4>
+                                <h6 class="card-subtitle">Paparan menunjukkan senarai sistem yang telah didaftarkan. Jika terdapat sebarang penambahan, sila klik butang <b>'Tambah Sistem'</b></h6>
+                                {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                <div class="m-t-40">
+                                        <div class="d-flex">
+                                            <div class="mr-auto">
+                                                <div class="form-group">
+                                                    <a href="{% url 'sistem_new' %}" class="btn btn-primary" >Tambah Aktiviti</a></div>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <div class="form-group">
+                                                    <input id="demo-input-search2" type="text" placeholder="Carian" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="table-responsive">
+                                    <table id="demo-foo-addrow2" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                                        <thead>
+                                            <tr>
+                                                  <th>Nama Sistem</th>
+                                                  <th>Tahun</th>
+                                                  <th>Status</th>
+                                                  <th>Pemilik Sistem</th>
+                                                  <th>Tindakan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for a in sistem %}
+                                              <tr>
+                                               <td>{{ a.NamaSistem }}</td> 
+                                               <td>{{ a.Tahun }}</td> 
+                                               <td>
+                                                {% if a.Status == 1 %}
+                                                    <span class="label label-success">Aktif</span>
+                                                {% else %}
+                                                    <span class="label label-danger">Tidak Aktif</span>
+                                                {% endif %}
+                                                </a></td> 
+                                               <td>{{ a.PemilikSistem }}</td> 
+                                               <td align="center">
+                                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline pencil-row-btn" data-toggle="tooltip" data-original-title="Kemaskini"><i class="ti-pencil" aria-hidden="true"></i></button>
+
+                                            </td> 
+                                              </tr>
+                                              {% endfor %}
+                                        </tbody> 
+                                        <tfoot>
+                                        <tr>
+                                            <td colspan="6">
+                                                <div class="text-right">
+                                                    <ul class="pagination">
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>     
+                                            
+                                        
+                                    </table>
+
+                                    {% for i in posts %}
+
+                                        {{i.IC}}
+                                        {{i.Nama}}
+
+                                    {% endfor %}    
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+  {% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Hapus Sistem</h4>
+                                <h6 class="card-subtitle">Sila pastikan maklumat sistem yang dihapuskan adalah betul</h6>
+
+								<form id="frm-example" method="post" enctype='multipart/form-data'>
+								  {% csrf_token %}
+								  {% if sistem %}
+								  	Adakah anda pasti mahu menghapuskan sistem : {{ sistem.NamaSistem }} ?
+								  <p class="text-center">
+								    <button type="submit" id="submit_yes" name="submit_yes" value="Yes" class="btn btn-primary">Hapus </button>
+								    <a href="{% url 'sistemdj_list' %}" class="btn btn-primary" >Batal</a>
+								  </p>
+								  {% else %}
+								  	Maaf rekod yang anda hapuskan tiada dalam senarai!
+								  	<p class="text-center">
+								    <a href="{% url 'sistemdj_list' %}" class="btn btn-primary" >Kembali ke Senarai sistem</a>
+								  </p>  
+								  {% endif %}
+								   
+								</form>
+							</div>
+						</div>
+					</div>
+	</div>
+</div>								
+{% endblock %}

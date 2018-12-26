@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Tambah Sistem</h4>
+                                <h6 class="card-subtitle">Sila isikan ruangan di bawah dengan memasukkan maklumat yang betul</h6>
+
+								<form id="frm-example" method="post" enctype='multipart/form-data' class="m-t-30">
+								  {% csrf_token %}
+								  <!-- <legend>Tambah Sistem</legend> -->
+								  {{ form|crispy }}
+								  <hr>
+								  <p class="text-center">
+								    <button type="submit" id="submit1" class="btn btn-primary">Submit</button>
+								    <a href="{% url 'sistemdj_list' %}" class="btn btn-primary" >Cancel</a>
+								  </p>   
+								</form>
+							</div>
+						</div>
+					</div>
+	</div>
+</div>								
+{% endblock %}
